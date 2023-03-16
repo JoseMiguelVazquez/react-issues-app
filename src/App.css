@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(12, 12, 56);
+    color:white;
+}
+
+.grid-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.issue-card {
+    background-color: aqua;
+    width: 300px;
+    text-decoration: none;
+    color:white;
+    margin: 30px;
+}
