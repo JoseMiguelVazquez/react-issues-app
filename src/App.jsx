@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import IssueRow from './components/IssueRow'
+import SearchBar from './components/SearchBar'
 
 function App () {
   const [issues, setIssues] = useState([])
@@ -12,9 +13,20 @@ function App () {
       .catch(error => console.log(error))
   }, [])
 
+  const sendFilter = (filter) => {
+    setIssues(
+      issues.filter(issue => {
+        return issue.title.includes(filter)
+      })
+    )
+  }
+
   return (
     <div className='App'>
       <h1>React Issues</h1>
+      <h2>This is a list of issues brought from the react issues API on github.</h2>
+      <h3>Click on a Title to visit it's page.</h3>
+      <SearchBar handleFilter={sendFilter} />
       <div className='table-wrapper'>
         <table className='issue-table'>
           <thead>
