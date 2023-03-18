@@ -6,19 +6,31 @@ import SearchBar from './components/SearchBar'
 function App () {
   const [issues, setIssues] = useState([])
 
-  useEffect(() => {
+  const fetchIssues = () => {
     fetch('https://api.github.com/repos/facebook/react/issues')
       .then(response => response.json())
       .then(results => setIssues(results))
       .catch(error => console.log(error))
+  }
+
+  useEffect(() => {
+    fetchIssues()
   }, [])
 
   const sendFilter = (filter) => {
-    setIssues(
-      issues.filter(issue => {
-        return issue.title.includes(filter)
-      })
-    )
+    if (filter === '') {
+      fetchIssues()
+    } else {
+      fetch('https://api.github.com/repos/facebook/react/issues')
+        .then(response => response.json())
+        .then(results => setIssues(
+          results.filter(issue => {
+            const titleLower = issue.title.toLowerCase()
+            const filterLower = filter.toLowerCase()
+            return titleLower.includes(filterLower)
+          })
+        )).catch(error => console.log(error))
+    }
   }
 
   return (

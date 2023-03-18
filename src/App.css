@@ -13,6 +13,14 @@ body {
     position:absolute;
 }
 
+.App {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 2rem;
+    width: 100%
+}
+
 h1 {
     font-size: 40px;
     text-align: center;
@@ -25,12 +33,28 @@ h3 {
     color: white;
 }
 
-.App {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 2rem;
-    width: 100%
+h2 {
+    margin-bottom: 10px;;
+}
+
+.search-bar {
+    text-align: center;
+    margin: 20px 0;
+}
+
+input,
+button {
+    font-size: 20px;
+    padding: 5px 10px;
+}
+
+input {
+    border-radius: 5px 0 0 5px;
+}
+
+button {
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
 }
 
 .table-wrapper {
@@ -90,5 +114,17 @@ tr:nth-of-type(odd) {
     
     td {
         font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    input {
+        border-radius: 5px;
+        margin-bottom: 10px;;
+    }
+    
+    button {
+        cursor: pointer;
+        border-radius: 5px;
     }
 }
